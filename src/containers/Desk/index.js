@@ -15,7 +15,7 @@ class Desk extends Component {
     }
     render() {
         const { desk } = this.props.mainStore,
-            { addBoard } = this.props.deskActions;
+            { addBoard, removeBoard } = this.props.deskActions;
 
         return (
             <div className={st}>
@@ -23,7 +23,13 @@ class Desk extends Component {
                     <Route
                         exact
                         path="/"
-                        component={() => <BordsList list={desk} />}
+                        component={() => (
+                            <BordsList
+                                list={desk}
+                                addBoard={addBoard}
+                                removeBoard={removeBoard}
+                            />
+                        )}
                     />
                     <Route
                         path="/board/:id"

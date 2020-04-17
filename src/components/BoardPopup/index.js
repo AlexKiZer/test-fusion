@@ -1,10 +1,15 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { default as st } from "./style";
-import { Formik, Form } from "formik";
+import { v4 as uuidv4 } from "uuid";
+import { useHistory } from "react-router-dom";
 
 import CrossBtn from "../../components/CrossBtn";
+import Form from "../../components/Form";
 
-const BoardPopup = ({ toggleHandler, state, createHandler }) => {
+const BoardPopup = ({ toggleHandler, state, createHandler, form }) => {
+    const id = uuidv4(),
+        history = useHistory();
+
     return (
         <Fragment>
             <div
@@ -20,15 +25,14 @@ const BoardPopup = ({ toggleHandler, state, createHandler }) => {
                     <h4 className={`${st}__title`}>Введите заголовок</h4>
 
                     <div className={`${st}__form`}>
-                        <Formik
-                            enableReinitialize={false}
-                            onSubmit={(values, actions) => {
-                                console.log(values, actions);
+                        <Form
+                            {...form}
+                            id={id}
+                            submitHandler={(values, id) => {
+                                createHandler({ values: values, id: id });
+                                history.push(`board/${id}`);
                             }}
-                            initialValues={{ title: "" }}
-                        >
-                            {(props) => <Form>{console.log(props)}</Form>}
-                        </Formik>
+                        />
                     </div>
                 </div>
             </div>

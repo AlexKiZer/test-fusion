@@ -9,7 +9,7 @@ export default css({
     textAlign: "center",
     cursor: "pointer",
     width: "100%",
-    height: 80,
+    height: "100%",
     ":hover": {
         backgroundColor: "rgba(9,30,66,.08)",
     },

@@ -7,3 +7,7 @@ export function getStorage(data) {
 export function addBoard(data) {
     return { type: "ADD_BOARD", payload: data };
 }
+
+export function removeBoard(data) {
+    return { type: "REMOVE_BOARD", payload: data };
+}

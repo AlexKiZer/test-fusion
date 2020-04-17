@@ -3,7 +3,7 @@ import { default as st } from "./style";
 
 import BoardPopup from "../../components/BoardPopup";
 
-const CreateBordBtn = ({ createHandler }) => {
+const CreateBordBtn = ({ createHandler, form, title }) => {
     let [showPopup, handlePopup] = useState(false);
 
     const togglePopup = (state) => {
@@ -13,10 +13,15 @@ const CreateBordBtn = ({ createHandler }) => {
     return (
         <Fragment>
             <div className={st} onClick={() => togglePopup(showPopup)}>
-                <p>Создать доску</p>
+                <p>{title}</p>
             </div>
             {showPopup && (
-                <BoardPopup toggleHandler={togglePopup} state={showPopup} />
+                <BoardPopup
+                    form={form}
+                    toggleHandler={togglePopup}
+                    state={showPopup}
+                    createHandler={createHandler}
+                />
             )}
         </Fragment>
     );
