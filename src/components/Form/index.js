@@ -19,7 +19,7 @@ const BoardPopup = ({
             initialValues={initialValues}
         >
             {() => (
-                <Form>
+                <Form className={st}>
                     <Field name="title">
                         {({ field, form }) => (
                             <input

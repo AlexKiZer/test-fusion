@@ -30,4 +30,7 @@ export default css({
         right: 0,
         top: 0,
     },
+    "&__title": {
+        color: "#000",
+    },
 });

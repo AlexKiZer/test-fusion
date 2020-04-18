@@ -18,7 +18,9 @@ const BoardPage = ({ match, data }) => {
     return (
         <div className={st}>
             {data[params.id] && (
-                <h3>{`Доска под названием: ${data[id].title}`}</h3>
+                <h3
+                    className={`${st}__title`}
+                >{`Доска под названием: ${data[id].title}`}</h3>
             )}
 
             <div className={`${st}__board`}>

@@ -30,4 +30,7 @@ export default css({
         right: 10,
         top: 10,
     },
+    "&__form": {
+        marginTop: 15,
+    },
 });
