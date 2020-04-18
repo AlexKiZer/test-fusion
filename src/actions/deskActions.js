@@ -1,5 +1,3 @@
-import { dispatch } from "../store";
-
 export function getStorage(data) {
     return { type: "GET_STORAGE", payload: data };
 }

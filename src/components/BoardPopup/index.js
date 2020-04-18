@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { default as st } from "./style";
 import { v4 as uuidv4 } from "uuid";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import CrossBtn from "../../components/CrossBtn";
 import Form from "../../components/Form";
@@ -29,6 +30,19 @@ const BoardPopup = ({ toggleHandler, state, createHandler, form }) => {
                             {...form}
                             id={id}
                             submitHandler={(values, id) => {
+                                const currentLocalStorageData =
+                                    JSON.parse(localStorage.getItem("desk")) ||
+                                    {};
+
+                                values.lanes = [];
+
+                                currentLocalStorageData[id] = values;
+
+                                localStorage.setItem(
+                                    "desk",
+                                    JSON.stringify(currentLocalStorageData)
+                                );
+
                                 createHandler({ values: values, id: id });
                                 history.push(`board/${id}`);
                             }}
@@ -38,6 +52,13 @@ const BoardPopup = ({ toggleHandler, state, createHandler, form }) => {
             </div>
         </Fragment>
     );
+};
+
+BoardPopup.propTypes = {
+    toggleHandler: PropTypes.func.isRequired,
+    createHandler: PropTypes.func.isRequired,
+    state: PropTypes.bool.isRequired,
+    form: PropTypes.object.isRequired,
 };
 
 export default BoardPopup;

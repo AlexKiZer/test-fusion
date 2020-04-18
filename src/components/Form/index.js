@@ -1,13 +1,12 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
 import { default as st } from "./style";
 import { Formik, Form, Field } from "formik";
-
-import CrossBtn from "../../components/CrossBtn";
+import PropTypes from "prop-types";
 
 const BoardPopup = ({
     submitHandler,
-    placeholder,
-    btnText,
+    placeholder = "Введите текст",
+    btnText = "Отправить",
     id,
     initialValues,
 }) => {
@@ -35,6 +34,14 @@ const BoardPopup = ({
             )}
         </Formik>
     );
+};
+
+BoardPopup.propTypes = {
+    submitHandler: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    btnText: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    initialValues: PropTypes.object.isRequired,
 };
 
 export default BoardPopup;

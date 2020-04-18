@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { default as st } from "./style";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import CreateBordBtn from "../../components/CreateBordBtn";
 import CrossBtn from "../../components/CrossBtn";
@@ -41,6 +42,12 @@ const BordsList = ({ list, addBoard, removeBoard }) => {
             </div>
         </div>
     );
+};
+
+BordsList.propTypes = {
+    list: PropTypes.object,
+    addBoard: PropTypes.func.isRequired,
+    removeBoard: PropTypes.func.isRequired,
 };
 
 export default BordsList;

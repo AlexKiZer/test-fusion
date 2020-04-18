@@ -2,15 +2,24 @@ const initialState = {
     desk: {},
 };
 
+const isEmpty = (obj) => {
+    for (let key in obj) {
+        return false;
+    }
+    return true;
+};
+
 const checkStorage = (desk) => {
     const localStorageData = JSON.parse(localStorage.getItem("desk")),
-        data = desk ? desk : localStorageData || {};
+        data = !isEmpty(desk) ? desk : localStorageData || {};
 
     return data;
 };
 
 const removeBoard = (desk, id) => {
     delete desk[id];
+
+    localStorage.setItem("desk", JSON.stringify(desk));
 
     return desk;
 };

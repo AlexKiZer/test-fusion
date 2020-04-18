@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { default as st } from "./style";
+import PropTypes from "prop-types";
 
 import BoardPopup from "../../components/BoardPopup";
 
@@ -13,7 +14,7 @@ const CreateBordBtn = ({ createHandler, form, title }) => {
     return (
         <Fragment>
             <div className={st} onClick={() => togglePopup(showPopup)}>
-                <p>{title}</p>
+                {title && <p>{title}</p>}
             </div>
             {showPopup && (
                 <BoardPopup
@@ -25,6 +26,12 @@ const CreateBordBtn = ({ createHandler, form, title }) => {
             )}
         </Fragment>
     );
+};
+
+CreateBordBtn.propTypes = {
+    createHandler: PropTypes.func.isRequired,
+    title: PropTypes.string,
+    form: PropTypes.object.isRequired,
 };
 
 export default CreateBordBtn;
